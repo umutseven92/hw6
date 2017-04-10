@@ -73,6 +73,15 @@ public:
     }
 
     bool isReachable(int target, int source) {
+         for (list<int>::iterator ip = outlist[source].begin(); ip != outlist[source].end(); ip++) {
+            if (*ip == target) {
+                return true;
+            } else {
+                return isReachable(*ip, source);
+            }
+        }
+
+        return false;
     }
 
     void addEdge(int s, int t) {
